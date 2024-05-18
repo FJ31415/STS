@@ -1,4 +1,6 @@
-package gamelogic;
+package gamelogic.entity;
+
+import gamelogic.Position;
 
 public abstract class GameEntity {
 

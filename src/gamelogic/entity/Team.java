@@ -1,4 +1,4 @@
-package gamelogic;
+package gamelogic.entity;
 
 public enum Team {
     TEAM_RED,

@@ -1,4 +1,7 @@
-package gamelogic;
+package gamelogic.maps;
+
+import gamelogic.entity.GameEntity;
+import gamelogic.Position;
 
 public final class GameMap {
 

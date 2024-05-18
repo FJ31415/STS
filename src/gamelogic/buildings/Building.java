@@ -1,4 +1,8 @@
-package gamelogic;
+package gamelogic.buildings;
+
+import gamelogic.entity.GameEntity;
+import gamelogic.Position;
+import gamelogic.entity.Team;
 
 public abstract class Building extends GameEntity {
     private final int generationFood, generationMaterial;
