@@ -1,23 +1,27 @@
 package gamelogic.buildings;
 
+import gamelogic.GameHandler;
+import gamelogic.entity.EntityGraphic;
 import gamelogic.entity.GameEntity;
 import gamelogic.Position;
-import gamelogic.entity.Team;
+import gamelogic.nations.MissingResourceException;
+import gamelogic.nations.Team;
 
 public abstract class Building extends GameEntity {
     private final int generationFood, generationMaterial;
 
-
-    public Building(String name, Team team, int baseHealth, int generationFood, int generationMaterial, Position position) {
-        super(name, team, baseHealth, position);
+    public Building(String name, Team team, int baseHealth, int costFood, int costMaterial, int generationFood, int generationMaterial, Position position, EntityGraphic graphic) {
+        super(name, team, baseHealth, costFood, costMaterial, position, graphic);
         this.generationFood = generationFood;
         this.generationMaterial = generationMaterial;
     }
 
     @Override
     public void update() {
-        team.addFood(generationFood);
-        team.addMaterial(generationMaterial);
+        try {
+            GameHandler.getInstance().getNation(team).addFood(generationFood);
+            GameHandler.getInstance().getNation(team).addMaterial(generationMaterial);
+        } catch (MissingResourceException ignored){}
     }
 
     // getter
