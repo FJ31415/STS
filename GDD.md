@@ -18,6 +18,7 @@
 > - Trains *Pikemen*
 > - Trains *Horseman*
 > - Trains *Archers*
+> - Houses 3 units
 
 > There are two economic buildings:
 > - The **Mine** (generates *material*)
@@ -33,3 +34,6 @@
 > - The *Pikemen* is an effective counter towards the *Horsemen*, because of his counter-attack.
 > - The *Horsemen* is an effective counter towards the *Archer*, because of his ability to close the distance.
 > - The *Archer* is an effective counter towards the *Pikemen*, because he out-ranges him. 
+
+> There is one military building:
+> - The **House** (houses one 2 units) 

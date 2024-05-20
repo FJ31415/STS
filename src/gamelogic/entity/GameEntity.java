@@ -1,6 +1,7 @@
 package gamelogic.entity;
 
 import gamelogic.Position;
+import gamelogic.nations.Team;
 
 public abstract class GameEntity {
     private final String name;

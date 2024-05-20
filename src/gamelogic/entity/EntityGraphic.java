@@ -1,6 +1,6 @@
 package gamelogic.entity;
 
-import gamelogic.entity.Team;
+import gamelogic.nations.Team;
 import ui.graphics.Animation;
 import ui.graphics.SpriteGraphic;
 
