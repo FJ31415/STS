@@ -1,6 +1,6 @@
 package ui.graphics;
 
-import gamelogic.entity.Team;
+import gamelogic.nations.Team;
 
 public abstract class Animation implements SpriteGraphic {
     private Team team;

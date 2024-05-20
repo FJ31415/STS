@@ -8,12 +8,13 @@ import gamelogic.nations.MissingResourceException;
 import gamelogic.nations.Team;
 
 public abstract class Building extends GameEntity {
-    private final int generationFood, generationMaterial;
+    private final int generationFood, generationMaterial, populationCapacity;
 
-    public Building(String name, Team team, int baseHealth, int costFood, int costMaterial, int generationFood, int generationMaterial, Position position, EntityGraphic graphic) {
+    public Building(String name, Team team, int baseHealth, int costFood, int costMaterial, int generationFood, int generationMaterial, int populationCapacity, Position position, EntityGraphic graphic) {
         super(name, team, baseHealth, costFood, costMaterial, position, graphic);
         this.generationFood = generationFood;
         this.generationMaterial = generationMaterial;
+        this.populationCapacity = populationCapacity;
     }
 
     @Override
@@ -32,5 +33,9 @@ public abstract class Building extends GameEntity {
 
     public final int getGenerationMaterial() {
         return generationMaterial;
+    }
+
+    public final int getPopulationCapacity() {
+        return populationCapacity;
     }
 }

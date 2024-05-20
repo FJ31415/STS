@@ -3,7 +3,7 @@ package gamelogic.units;
 import gamelogic.entity.GameEntity;
 import gamelogic.maps.GameMap;
 import gamelogic.Position;
-import gamelogic.entity.Team;
+import gamelogic.nations.Team;
 
 import java.util.HashSet;
 
