@@ -25,7 +25,7 @@ public abstract class GameEntity {
 
     public abstract void update();
 
-    public final void addHealth(int i) {
+    public void addHealth(int i) {
         health += i;
 
         if (health < 0)

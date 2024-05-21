@@ -9,7 +9,7 @@ import gamelogic.nations.Team;
 public abstract class Unit extends GameEntity {
 
     private final int maintenanceFood, maintenanceMaterial, movementRange, attackRange, damage, regeneration;
-    private boolean moved, attacked;
+    private boolean moved, attacked, wasAttacked;
 
     public Unit(String name, Team team, int baseHealth, int costFood, int costMaterial, int maintenanceFood, int maintenanceMaterial,  int  movementRange, int attackRange, int damage, int healing, Position position, EntityGraphic graphic) {
         super(name, team, baseHealth, costFood, costMaterial, position,  graphic);
@@ -21,6 +21,7 @@ public abstract class Unit extends GameEntity {
         this.regeneration = healing;
         moved = false;
         attacked = false;
+        wasAttacked = false;
     }
 
     @Override
@@ -34,22 +35,20 @@ public abstract class Unit extends GameEntity {
         }
 
         // regenerate
-        if(!(moved && attacked))
+        if(!(wasAttacked && moved && attacked))
             addHealth(regeneration);
 
         moved = false;
         attacked = false;
+        wasAttacked = false;
     }
 
-    public final boolean isAccessiblePosition(Position destination) {
-        return  Math.abs(destination.getX() - position.getX()) <= movementRange && Math.abs(destination.getY() - position.getY()) <= movementRange;
-        // TODO upgrade with A*
+    @Override
+    public final void addHealth(int i) {
+        super.addHealth(i);
+        if(i < 0)
+            wasAttacked = true;
     }
-
-    public final boolean isAttackablePosition (Position target) {
-       return Math.abs(target.getX() - position.getX()) == attackRange && Math.abs(target.getY() - position.getY()) == attackRange;
-    }
-
 
     public boolean moveTo(Position destination) {
         if(!moved && isAccessiblePosition(destination)) {
@@ -59,6 +58,11 @@ public abstract class Unit extends GameEntity {
         }
 
         return false;
+    }
+
+    private  boolean isAccessiblePosition(Position destination) {
+        return  Math.abs(destination.getX() - position.getX()) <= movementRange && Math.abs(destination.getY() - position.getY()) <= movementRange;
+        // TODO upgrade with A*
     }
 
     public boolean attack(GameEntity enemy) {
@@ -71,6 +75,10 @@ public abstract class Unit extends GameEntity {
         }
 
         return false;
+    }
+
+    private boolean isAttackablePosition (Position target) {
+        return Math.abs(target.getX() - position.getX()) == attackRange && Math.abs(target.getY() - position.getY()) == attackRange;
     }
 
     // getter
