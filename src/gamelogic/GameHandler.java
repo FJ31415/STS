@@ -1,5 +1,6 @@
 package gamelogic;
 
+import gamelogic.entity.GameEntity;
 import gamelogic.maps.GameMap;
 import gamelogic.nations.Nation;
 import gamelogic.nations.Team;
@@ -29,6 +30,10 @@ public final class GameHandler {
     }
 
     public GameMap getMap() {
+        // TODO implement
+    }
+
+    public GameEntity getEntityAt(Position destination) {
         // TODO implement
     }
 }
