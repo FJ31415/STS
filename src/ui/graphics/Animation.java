@@ -27,7 +27,7 @@ public abstract class Animation implements SpriteGraphic {
 
     // methods
 
-    public void update() {
+    public final void update() {
         if(++selectedKeyframe == keyframes.length)
             selectedKeyframe = 0;
     }
@@ -40,5 +40,11 @@ public abstract class Animation implements SpriteGraphic {
 
     public final int getSpriteIdx() {
         return keyframes[selectedKeyframe].ordinal() + team.getSpriteShift();
+    }
+
+    @Override
+    public final int getUpdatedSpriteIdx() {
+        update();
+        return getSpriteIdx();
     }
 }
