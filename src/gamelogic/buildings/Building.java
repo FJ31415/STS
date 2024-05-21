@@ -19,7 +19,7 @@ public abstract class Building extends GameEntity {
 
     @Override
     public void update() {
-        // generate resources TODO update
+        // generate resources
         try {
             GameHandler.getInstance().getNation(team).addFood(getGenerationFood());
             GameHandler.getInstance().getNation(team).addMaterial(getGenerationMaterial());
@@ -29,11 +29,11 @@ public abstract class Building extends GameEntity {
     // getter
 
     public final int getGenerationFood() {
-        return Math.round((float) (maxGenerationFood * health) / baseHealth);
+        return maxGenerationFood * Math.round((float) health / baseHealth);
     }
 
     public final int getGenerationMaterial() {
-        return  Math.round((float) (maxGenerationMaterial * health) / baseHealth);
+        return maxGenerationMaterial * Math.round((float) health / baseHealth);
     }
 
     public final int getPopulationCapacity() {
