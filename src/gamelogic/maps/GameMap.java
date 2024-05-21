@@ -1,21 +1,16 @@
 package gamelogic.maps;
-
-import gamelogic.entity.GameEntity;
 import gamelogic.Position;
+import gamelogic.entity.GameEntity;
 
 public final class GameMap {
 
-    // TODO impl
-
-    public GameEntity getEntityAt(int x, int y) {
-    }
-
-    public boolean isOutOfBounds(int x, int y) {
-    }
+    // TODO implement
 
     public boolean isOutOfBounds(Position position) {
+        // TODO implement
     }
 
-    public GameEntity getEntityAt(Position position) {
+    public GameEntity[] getBaseEntities() {
+        // TODO implement
     }
 }
