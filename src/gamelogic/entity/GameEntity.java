@@ -25,11 +25,13 @@ public abstract class GameEntity {
 
     public abstract void update();
 
-    public final void subtractHealth(int damage) {
-        health -= damage;
+    public final void addHealth(int i) {
+        health += i;
 
         if (health < 0)
             health = 0;
+        else if(health > baseHealth)
+            health = baseHealth;
     }
 
     // getter

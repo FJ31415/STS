@@ -1,93 +1,87 @@
 package gamelogic.units;
-
+import gamelogic.GameHandler;
+import gamelogic.entity.EntityGraphic;
 import gamelogic.entity.GameEntity;
-import gamelogic.maps.GameMap;
 import gamelogic.Position;
+import gamelogic.nations.NotEnoughResourcesException;
 import gamelogic.nations.Team;
-
-import java.util.HashSet;
 
 public abstract class Unit extends GameEntity {
 
-    private final int movementRange, attackRange, damage;
-    private final HashSet<Position>  accessiblePositions, targetPositions;
+    private final int maintenanceFood, maintenanceMaterial, movementRange, attackRange, damage, regeneration;
+    private boolean moved, attacked;
 
-    public Unit(String name, Team team, int baseHealth, int  movementRange, int attackRange, int damage, Position position) {
-        super(name, team, baseHealth, position);
+    public Unit(String name, Team team, int baseHealth, int costFood, int costMaterial, int maintenanceFood, int maintenanceMaterial,  int  movementRange, int attackRange, int damage, int healing, Position position, EntityGraphic graphic) {
+        super(name, team, baseHealth, costFood, costMaterial, position,  graphic);
+        this.maintenanceFood = maintenanceFood;
+        this.maintenanceMaterial = maintenanceMaterial;
         this.movementRange = movementRange;
         this.attackRange = attackRange;
         this.damage = damage;
-        accessiblePositions = new HashSet<>();
-        targetPositions = new HashSet<>();
+        this.regeneration = healing;
+        moved = false;
+        attacked = false;
     }
 
     @Override
     public void update() {
-        accessiblePositions.clear();
-        targetPositions.clear();
-    }
-
-    public final void calculateAccessiblePositions(GameMap map) {
-        calculateSurroundingAccessiblePositions(this.position, map);
-
-        for(int i = 0, len = movementRange - 1; i < len; i++)
-            for (Position p : accessiblePositions)
-                calculateSurroundingAccessiblePositions(p, map);
-    }
-
-    private void calculateSurroundingAccessiblePositions(Position position, GameMap map) {
-        for (int x = position.getX() - 1, lenX = position.getX() + 1; x <= lenX; x++)
-            for (int y = position.getY() - 1, lenY = position.getY() + 1; y <= lenY; y++)
-                if(!(x == 0 && y == 0) && !map.isOutOfBounds(x, y) && map.getEntityAt(x, y) == null)
-                    accessiblePositions.add(new Position(x, y));
-    }
-
-    private boolean isAccessiblePosition(Position position, GameMap map) {
-        return !map.isOutOfBounds(position) && map.getEntityAt(position) == null;
-    }
-
-    public final void calculateTargetPositions(GameMap map) {
-        // calculate left & right rim
-        for(int y = position.getY() - attackRange, len = position.getY() + attackRange,
-            x1 = position.getX() + attackRange, x2 = position.getX() - attackRange; y <= len; y++) {
-            if(isTarget(x1, y, map))
-                targetPositions.add(new Position(x1, y));
-            if(isTarget(x2, y, map))
-                targetPositions.add(new Position(x2, y));
+        // maintain
+        try {
+            GameHandler.getInstance().getNation(team).addFood(-1 * maintenanceFood);
+            GameHandler.getInstance().getNation(team).addMaterial(-1 * maintenanceMaterial);
+        } catch (NotEnoughResourcesException e) {
+            addHealth(-1);
         }
 
-        // calculate top & bottom rim
-        for (int x = position.getX() - (attackRange - 1), len = position.getX() + (attackRange - 1),
-             y1 = position.getY() + attackRange, y2 = position.getY() - attackRange; x < len; x++) {
-            if(isTarget(x, y1, map))
-                targetPositions.add(new Position(x, y1));
-            if(isTarget(x, y2, map))
-                targetPositions.add(new Position(x, y2));
+        // regenerate
+        if(!(moved && attacked))
+            addHealth(regeneration);
+
+        moved = false;
+        attacked = false;
+    }
+
+    public final boolean isAccessiblePosition(Position destination) {
+        return  Math.abs(destination.getX() - position.getX()) <= movementRange && Math.abs(destination.getY() - position.getY()) <= movementRange;
+        // TODO upgrade with A*
+    }
+
+    public final boolean isAttackablePosition (Position target) {
+       return Math.abs(target.getX() - position.getX()) == attackRange && Math.abs(target.getY() - position.getY()) == attackRange;
+    }
+
+
+    public boolean moveTo(Position destination) {
+        if(!moved && isAccessiblePosition(destination)) {
+            position.set(destination);
+            moved = true;
+            return true;
         }
-    }
-
-    private boolean isTarget(int x, int y, GameMap map) {
-        return !map.isOutOfBounds(x, y)
-                && map.getEntityAt(x, y) != null
-                && !map.getEntityAt(x,y).getTeam().equals(team);
-    }
-
-    public boolean moveTo(Position destination, GameMap  map) {
-        for (Position p : accessiblePositions)
-            if(!isAccessiblePosition(p, map))
-                accessiblePositions.remove(p);
-            else if(p.equals(destination)) {
-                position.set(destination);
-                accessiblePositions.clear();
-                return true;
-            }
 
         return false;
     }
 
-    // TODO add attack()
+    public boolean attack(GameEntity enemy) {
+        if(!attacked && !enemy.getTeam().equals(team) && isAttackablePosition(enemy.getPosition())) {
+            enemy.addHealth(-1 * damage);
+            if(enemy instanceof Pikemen)
+                ((Pikemen) enemy).counterAttack(this);
+            attacked = true;
+            return true;
+        }
+
+        return false;
+    }
 
     // getter
+
+    public final int getMaintenanceFood() {
+        return maintenanceFood;
+    }
+
+    public final int getMaintenanceMaterial() {
+        return maintenanceMaterial;
+    }
 
     public final int getMovementRange() {
         return movementRange;
@@ -99,5 +93,9 @@ public abstract class Unit extends GameEntity {
 
     public final int getDamage() {
         return damage;
+    }
+
+    public final int getRegeneration() {
+        return regeneration;
     }
 }

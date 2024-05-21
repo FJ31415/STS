@@ -4,7 +4,7 @@ import gamelogic.GameHandler;
 import gamelogic.entity.EntityGraphic;
 import gamelogic.entity.GameEntity;
 import gamelogic.Position;
-import gamelogic.nations.MissingResourceException;
+import gamelogic.nations.NotEnoughResourcesException;
 import gamelogic.nations.Team;
 
 public abstract class Building extends GameEntity {
@@ -19,10 +19,11 @@ public abstract class Building extends GameEntity {
 
     @Override
     public void update() {
+        // generate resources
         try {
             GameHandler.getInstance().getNation(team).addFood(generationFood);
             GameHandler.getInstance().getNation(team).addMaterial(generationMaterial);
-        } catch (MissingResourceException ignored){}
+        } catch (NotEnoughResourcesException ignored){}
     }
 
     // getter
