@@ -2,7 +2,7 @@ package ui.graphics;
 
 import gamelogic.nations.Team;
 
-public abstract class Animation implements SpriteGraphic {
+public class Animation implements SpriteGraphic {
     private Team team;
     protected final Sprite[] keyframes;
     protected int selectedKeyframe;

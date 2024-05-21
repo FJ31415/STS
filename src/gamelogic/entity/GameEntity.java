@@ -4,10 +4,10 @@ import gamelogic.Position;
 import gamelogic.nations.Team;
 
 public abstract class GameEntity {
-    private final String name;
+    protected final String name;
     protected final Team team;
-    private final int baseHealth;
-    private int health;
+    protected final int baseHealth;
+    protected int health;
     protected final int costFood, costMaterial;
     protected final Position position;
     protected final EntityGraphic graphic;
@@ -21,6 +21,8 @@ public abstract class GameEntity {
         this.costMaterial = costMaterial;
         this.graphic = graphic;
         this.position = position;
+
+        graphic.setHost(this);
     }
 
     public abstract void update();

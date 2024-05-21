@@ -8,17 +8,17 @@ import gamelogic.nations.Team;
 
 public abstract class Unit extends GameEntity {
 
-    private final int maintenanceFood, maintenanceMaterial, movementRange, attackRange, damage, regeneration;
-    private boolean moved, attacked, wasAttacked;
+    protected final int maintenanceFood, maintenanceMaterial, movementRange, attackRange, damage, regeneration;
+    protected boolean moved, attacked, wasAttacked;
 
-    public Unit(String name, Team team, int baseHealth, int costFood, int costMaterial, int maintenanceFood, int maintenanceMaterial,  int  movementRange, int attackRange, int damage, int healing, Position position, EntityGraphic graphic) {
+    public Unit(String name, Team team, int baseHealth, int costFood, int costMaterial, int maintenanceFood, int maintenanceMaterial,  int  movementRange, int attackRange, int damage, int regeneration, Position position, EntityGraphic graphic) {
         super(name, team, baseHealth, costFood, costMaterial, position,  graphic);
         this.maintenanceFood = maintenanceFood;
         this.maintenanceMaterial = maintenanceMaterial;
         this.movementRange = movementRange;
         this.attackRange = attackRange;
         this.damage = damage;
-        this.regeneration = healing;
+        this.regeneration = regeneration;
         moved = false;
         attacked = false;
         wasAttacked = false;
@@ -60,7 +60,7 @@ public abstract class Unit extends GameEntity {
         return false;
     }
 
-    private  boolean isAccessiblePosition(Position destination) {
+    protected final boolean isAccessiblePosition(Position destination) {
         return  Math.abs(destination.getX() - position.getX()) <= movementRange && Math.abs(destination.getY() - position.getY()) <= movementRange;
         // TODO upgrade with A*
     }
@@ -77,7 +77,7 @@ public abstract class Unit extends GameEntity {
         return false;
     }
 
-    private boolean isAttackablePosition (Position target) {
+    protected final boolean isAttackablePosition (Position target) {
         return Math.abs(target.getX() - position.getX()) == attackRange && Math.abs(target.getY() - position.getY()) == attackRange;
     }
 

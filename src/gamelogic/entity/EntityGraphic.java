@@ -5,26 +5,32 @@ import ui.graphics.Animation;
 import ui.graphics.SpriteGraphic;
 
 public class EntityGraphic implements SpriteGraphic {
-    public final Animation[] animations;
-    public int selectedAnimation;
+    protected final Animation[] animations;
+    protected int selectedAnimation;
+    protected GameEntity host;
 
-    public EntityGraphic(Animation[] animations, Team team) {
+    public EntityGraphic(Team team, Animation[] animations) {
         this.animations = animations;
         selectedAnimation = 0;
         for(Animation a : this.animations)
             a.setTeam(team);
+        host = null;
     }
 
-    public EntityGraphic(Animation animation, Team team) {
+    public EntityGraphic(Team team, Animation animation) {
         this.animations = new Animation[]{ animation };
         selectedAnimation = 0;
         this.animations[0].setTeam(team);
+        host = null;
     }
 
-    // methods
-
     @Override
-    public void update() {
+    public final void update() {
+        selectedAnimation = host.getHealth() -1;
+    }
+
+    public final void setHost(GameEntity host) {
+        this.host = host;
     }
 
     @Override
