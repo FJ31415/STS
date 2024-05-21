@@ -16,9 +16,9 @@
 > If it is destroyed, the game is lost.  
 > - Above average health
 > - Trains *Pikemen*
-> - Trains *Horseman*
+> - Trains *Horsemen*
 > - Trains *Archers*
-> - Houses 3 units
+> - Houses three units
 
 > There are two economic buildings:
 > - The **Mine** (generates *material*)
@@ -36,4 +36,4 @@
 > - The *Archer* is an effective counter towards the *Pikemen*, because he out-ranges him. 
 
 > There is one military building:
-> - The **House** (houses one 2 units) 
+> - The **House** (houses two units) 

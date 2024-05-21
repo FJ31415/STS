@@ -1,5 +1,6 @@
 package gamelogic;
 
+import gamelogic.maps.GameMap;
 import gamelogic.nations.Nation;
 import gamelogic.nations.Team;
 
@@ -24,6 +25,10 @@ public final class GameHandler {
     }
 
     public Nation getNation(Team team) {
+        // TODO implement
+    }
+
+    public GameMap getMap() {
         // TODO implement
     }
 }

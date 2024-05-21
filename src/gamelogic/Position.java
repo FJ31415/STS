@@ -1,6 +1,6 @@
 package gamelogic;
 
-public final class Position {
+public class Position {
 
     private int x, y;
 
@@ -19,30 +19,34 @@ public final class Position {
                 && ((Position) obj).getY() == y;
     }
 
+    public final boolean equals(int x, int y) {
+        return this.x == x && this.y == y;
+    }
+
     // setter
 
-    public void set(int x, int y) {
+    public final void set(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public  void set(Position position) {
+    public final void set(Position position) {
         x = position.getX();
         y = position.getY();
     }
 
-    public void add(int x, int y) {
+    public final void add(int x, int y) {
         this.x += x;
         this.y += y;
     }
 
     // getter
 
-    public int getX() {
+    public final int getX() {
         return x;
     }
 
-    public int getY() {
+    public final int getY() {
         return y;
     }
 }

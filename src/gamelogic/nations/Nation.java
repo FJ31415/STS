@@ -1,7 +1,5 @@
 package gamelogic.nations;
 
-import java.util.ArrayList;
-
 public final class Nation {
     private final Team team;
     private int food, material;
@@ -12,18 +10,18 @@ public final class Nation {
         material = 0;
     }
 
-    public void addFood(int i) throws MissingResourceException {
+    public void addFood(int i) throws NotEnoughResourcesException {
         int f = food + i;
         if(f < 0)
-            throw new MissingResourceException(f, "food");
+            throw new NotEnoughResourcesException(f, "food");
         else
             food = f;
     }
 
-    public void addMaterial(int i) throws MissingResourceException {
+    public void addMaterial(int i) throws NotEnoughResourcesException {
         int m = material + i;
         if(m < 0)
-            throw new MissingResourceException(m, "material");
+            throw new NotEnoughResourcesException(m, "material");
         else
             material= m;
     }
