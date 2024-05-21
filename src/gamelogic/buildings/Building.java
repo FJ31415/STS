@@ -8,32 +8,32 @@ import gamelogic.nations.NotEnoughResourcesException;
 import gamelogic.nations.Team;
 
 public abstract class Building extends GameEntity {
-    private final int generationFood, generationMaterial, populationCapacity;
+    private final int maxGenerationFood, maxGenerationMaterial, populationCapacity;
 
     public Building(String name, Team team, int baseHealth, int costFood, int costMaterial, int generationFood, int generationMaterial, int populationCapacity, Position position, EntityGraphic graphic) {
         super(name, team, baseHealth, costFood, costMaterial, position, graphic);
-        this.generationFood = generationFood;
-        this.generationMaterial = generationMaterial;
+        this.maxGenerationFood = generationFood;
+        this.maxGenerationMaterial = generationMaterial;
         this.populationCapacity = populationCapacity;
     }
 
     @Override
     public void update() {
-        // generate resources
+        // generate resources TODO update
         try {
-            GameHandler.getInstance().getNation(team).addFood(generationFood);
-            GameHandler.getInstance().getNation(team).addMaterial(generationMaterial);
+            GameHandler.getInstance().getNation(team).addFood(getGenerationFood());
+            GameHandler.getInstance().getNation(team).addMaterial(getGenerationMaterial());
         } catch (NotEnoughResourcesException ignored){}
     }
 
     // getter
 
     public final int getGenerationFood() {
-        return generationFood;
+        return Math.round((float) (maxGenerationFood * health) / baseHealth);
     }
 
     public final int getGenerationMaterial() {
-        return generationMaterial;
+        return  Math.round((float) (maxGenerationMaterial * health) / baseHealth);
     }
 
     public final int getPopulationCapacity() {
