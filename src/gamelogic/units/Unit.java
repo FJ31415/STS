@@ -52,7 +52,7 @@ public abstract class Unit extends GameEntity {
 
     public boolean moveTo(Position destination) {
         if(moved || GameHandler.getInstance().getMap().isOutOfBounds(destination)
-                || GameHandler.getInstance().getEntityAt(destination) != null || !isAccessiblePosition(destination))
+                || GameHandler.getInstance().isEntityAt(destination) || !isAccessiblePosition(destination))
             return false;
 
         position.set(destination);

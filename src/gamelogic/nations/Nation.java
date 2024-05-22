@@ -39,4 +39,5 @@ public final class Nation {
     public int getMaterial() {
         return material;
     }
+
 }
