@@ -1,6 +1,11 @@
 package ui.graphics;
 
 public enum Sprite {
+    MEADOW_1,
+    MEADOW_2,
+    FOREST_1,
+    FOREST_2,
+
     CAPITAL_ONE_HEALTH_1,
     CAPITAL_ONE_HEALTH_2,
     CAPITAL_TWO_HEALTH_1,
