@@ -35,8 +35,25 @@ public class Position {
         y = position.getY();
     }
 
+
+    public final void setX(int x) {
+        this.x = x;
+    }
+
+    public final void setY(int y) {
+        this.y = y;
+    }
+
     public final void add(int x, int y) {
         this.x += x;
+        this.y += y;
+    }
+
+    public final void addX(int x) {
+        this.x += x;
+    }
+
+    public final void addY(int y) {
         this.y += y;
     }
 

@@ -1,5 +1,7 @@
 package ui.graphics;
 
+import ui.graphics.gui.GUI;
+
 public enum Sprite {
     MEADOW_1,
     MEADOW_2,
@@ -41,5 +43,7 @@ public enum Sprite {
     ARCHER_ONE_HEALTH_1,
     ARCHER_ONE_HEALTH_2,
     ARCHER_TWO_HEALTH_1,
-    ARCHER_TWO_HEALTH_2,
+    ARCHER_TWO_HEALTH_2;
+
+    public static final int SIZE = 16 * GUI.RESCALE_FACTOR;
 }

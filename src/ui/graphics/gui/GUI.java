@@ -1,13 +1,19 @@
 package ui.graphics.gui;
 
 import ui.UI;
+import ui.graphics.Sprite;
 
 import javax.swing.*;
 
 public class GUI extends JFrame implements UI {
     private static volatile GUI instance;
+    private final Rendering rendering;
+    public static final int RESCALE_FACTOR = 4, WIDTH = 10 * Sprite.SIZE, HEIGHT = 10 * Sprite.SIZE;
 
     private GUI() {
+        rendering = new Rendering();
+        setContentPane(rendering);
+
         // TODO implement
     }
 
