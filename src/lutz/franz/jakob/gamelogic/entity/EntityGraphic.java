@@ -1,8 +1,8 @@
 package lutz.franz.jakob.gamelogic.entity;
 
 import lutz.franz.jakob.gamelogic.nations.Team;
-import lutz.franz.jakob.ui.graphics.Animation;
-import lutz.franz.jakob.ui.graphics.SpriteGraphic;
+import lutz.franz.jakob.presentation.graphics.Animation;
+import lutz.franz.jakob.presentation.graphics.SpriteGraphic;
 
 public class EntityGraphic implements SpriteGraphic {
     protected final Animation[] animations;

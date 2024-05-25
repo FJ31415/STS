@@ -1,6 +1,6 @@
-package lutz.franz.jakob.ui.graphics;
+package lutz.franz.jakob.presentation.gui;
 
-import lutz.franz.jakob.ui.graphics.gui.GUI;
+import lutz.franz.jakob.presentation.graphics.Sprite;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

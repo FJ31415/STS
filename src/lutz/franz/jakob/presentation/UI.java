@@ -1,4 +1,4 @@
-package lutz.franz.jakob.ui;
+package lutz.franz.jakob.presentation;
 
 public interface UI {
     void updateGraphics();

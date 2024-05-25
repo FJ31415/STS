@@ -1,6 +1,6 @@
-package lutz.franz.jakob.ui.graphics;
+package lutz.franz.jakob.presentation.graphics;
 
-import lutz.franz.jakob.ui.graphics.gui.GUI;
+import lutz.franz.jakob.presentation.gui.GUI;
 
 public enum Sprite {
     MEADOW_1,

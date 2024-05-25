@@ -3,8 +3,8 @@ package lutz.franz.jakob.gamelogic.buildings;
 import lutz.franz.jakob.gamelogic.Position;
 import lutz.franz.jakob.gamelogic.entity.EntityGraphic;
 import lutz.franz.jakob.gamelogic.nations.Team;
-import lutz.franz.jakob.ui.graphics.Animation;
-import lutz.franz.jakob.ui.graphics.Sprite;
+import lutz.franz.jakob.presentation.graphics.Animation;
+import lutz.franz.jakob.presentation.graphics.Sprite;
 
 public final class Mine extends Building {
     public Mine(Team team, Position position) {

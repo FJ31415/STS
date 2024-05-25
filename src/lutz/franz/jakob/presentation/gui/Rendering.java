@@ -1,8 +1,6 @@
-package lutz.franz.jakob.ui.graphics.gui;
+package lutz.franz.jakob.presentation.gui;
 
-import lutz.franz.jakob.control.Main;
-import lutz.franz.jakob.ui.graphics.Sprite;
-import lutz.franz.jakob.ui.graphics.SpriteSet;
+import lutz.franz.jakob.presentation.graphics.Sprite;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
@@ -27,6 +25,6 @@ public final class Rendering extends JPanel {
     @Override
     public void paintComponents(Graphics g) {
         // super.paintComponents(g); TODO
-        Main.getInstance().getState().render(g, sprites);
+        GUI.getInstance().getGUIState().render(g, sprites);
     }
 }

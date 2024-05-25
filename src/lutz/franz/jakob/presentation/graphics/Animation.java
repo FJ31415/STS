@@ -1,4 +1,4 @@
-package lutz.franz.jakob.ui.graphics;
+package lutz.franz.jakob.presentation.graphics;
 
 import lutz.franz.jakob.gamelogic.nations.Team;
 

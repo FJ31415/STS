@@ -1,9 +1,9 @@
 package lutz.franz.jakob.gamelogic.maps;
 
-import lutz.franz.jakob.ui.graphics.Animation;
-import lutz.franz.jakob.ui.graphics.Sprite;
+import lutz.franz.jakob.presentation.graphics.Animation;
+import lutz.franz.jakob.presentation.graphics.Sprite;
 
-import static lutz.franz.jakob.ui.graphics.Sprite.*;
+import static lutz.franz.jakob.presentation.graphics.Sprite.*;
 
 public enum Terrain {
     MEADOW("Meadow", MEADOW_1, MEADOW_2),

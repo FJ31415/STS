@@ -1,4 +1,4 @@
-package lutz.franz.jakob.ui.graphics;
+package lutz.franz.jakob.presentation.graphics;
 
 public interface SpriteGraphic {
     void update();
