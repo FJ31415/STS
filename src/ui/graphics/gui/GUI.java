@@ -1,4 +1,6 @@
-package ui;
+package ui.graphics.gui;
+
+import ui.UI;
 
 import javax.swing.*;
 

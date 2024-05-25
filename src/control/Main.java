@@ -2,10 +2,8 @@ package control;
 
 import gamelogic.GameHandler;
 import gamelogic.maps.SmallMap;
-import ui.GUI;
+import ui.graphics.gui.GUI;
 import ui.UI;
-
-import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
