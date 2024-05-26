@@ -5,6 +5,7 @@ public abstract class UpdatingThread extends Thread {
 
     public UpdatingThread(int ups) {
         t = 1000/ups;
+        start();
     }
 
     @Override

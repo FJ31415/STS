@@ -51,5 +51,5 @@ public enum Sprite {
     ARCHER_TWO_HEALTH_1,
     ARCHER_TWO_HEALTH_2;
 
-    public static final int SIZE = 16 * GUI.RESCALE_FACTOR;
+    public static final int SIZE = 16, R_SIZE = SIZE * GUI.RESCALE_FACTOR;
 }

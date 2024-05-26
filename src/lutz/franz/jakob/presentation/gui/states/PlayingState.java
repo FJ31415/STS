@@ -14,12 +14,13 @@ import java.awt.event.MouseEvent;
 public final class PlayingState extends GUIState {
     @Override
     public void render(Graphics g, SpriteSet sprites) {
+        System.out.println("rendering (GUIState)"); // TODO remove debug
         // render map
         for(int y = 0, fY = -1 * GUI.MAP_RADIUS; y < GUI.MAP_SIZE; y++, fY++)
             for (int x = 0, fX = -1 * GUI.MAP_RADIUS; fX < GUI.MAP_SIZE; x++, fX++) {
                 int lX = (GUI.getInstance().getCamera().getX() + fX),
                         lY = (GUI.getInstance().getCamera().getY() + fY),
-                        rX = x * Sprite.SIZE, rY = y * Sprite.SIZE;
+                        rX = x * Sprite.R_SIZE, rY = y * Sprite.R_SIZE;
 
                 // render terrain
                 Terrain t = GameHandler.getInstance().getMap().getTerrain(lX, lY);
