@@ -24,10 +24,6 @@ public abstract class GameMap {
         return startingUnits;
     }
 
-    public final Terrain getTerrain(Position position) {
-        return getTerrain(position.getX(), position.getY());
-    }
-
     public final Terrain getTerrain(int x, int y) {
         if(isOutOfBounds(x, y))
             return null;
