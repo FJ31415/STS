@@ -29,6 +29,9 @@ public abstract class GameMap {
     }
 
     public final Terrain getTerrain(int x, int y) {
+        if(isOutOfBounds(x, y))
+            return null;
+
         return map[x][y];
     }
 
