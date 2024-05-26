@@ -10,18 +10,17 @@ import javax.swing.JFrame;
 
 public final class GUI extends JFrame implements UI {
     private static volatile GUI instance;
-    private final Rendering rendering;
     private final Position camera;
     private GUIState state;
-    public static final int RESCALE_FACTOR = 4, WIDTH = 11 * Sprite.SIZE, HEIGHT = 9 * Sprite.SIZE;
+    public static final int RESCALE_FACTOR = 4,  MAP_RADIUS = 4, MAP_SIZE = 1 + 2 * MAP_RADIUS,
+            WIDTH = (MAP_SIZE + 2) * Sprite.SIZE, HEIGHT = MAP_SIZE * Sprite.SIZE;
 
     private GUI() {
         camera = new Position(0,0);
         state = new PlayingState();
-        rendering = new Rendering();
 
         setTitle("STS");
-        setContentPane(rendering);
+        setContentPane(new Rendering());
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         // setIconImage(); TODO

@@ -1,6 +1,7 @@
 package lutz.franz.jakob.gamelogic;
 
 import lutz.franz.jakob.gamelogic.buildings.Building;
+import lutz.franz.jakob.gamelogic.entity.GameEntity;
 import lutz.franz.jakob.gamelogic.maps.GameMap;
 import lutz.franz.jakob.gamelogic.nations.Nation;
 import lutz.franz.jakob.gamelogic.nations.Team;
@@ -83,5 +84,17 @@ public final class GameHandler {
                 return true;
 
         return false;
+    }
+
+    public GameEntity getEntityAt(int x, int y) {
+        for(Building b : buildings)
+            if(b.getPosition().equals(x, y))
+                return b;
+
+        for(Unit u : units)
+            if(u.getPosition().equals(x, y))
+                return u;
+
+        return null;
     }
 }

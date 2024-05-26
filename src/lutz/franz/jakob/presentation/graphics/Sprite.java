@@ -3,10 +3,16 @@ package lutz.franz.jakob.presentation.graphics;
 import lutz.franz.jakob.presentation.gui.GUI;
 
 public enum Sprite {
+    BLACK,
     MEADOW_1,
     MEADOW_2,
     FOREST_1,
     FOREST_2,
+    EMPTY_5,
+    EMPTY_6,
+    EMPTY_7,
+    EMPTY_8,
+    EMPTY_9,
 
     CAPITAL_ONE_HEALTH_1,
     CAPITAL_ONE_HEALTH_2,
