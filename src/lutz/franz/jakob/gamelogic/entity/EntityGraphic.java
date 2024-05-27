@@ -31,6 +31,7 @@ public class EntityGraphic implements SpriteGraphic {
 
     public final void setHost(GameEntity host) {
         this.host = host;
+        update();
     }
 
     @Override

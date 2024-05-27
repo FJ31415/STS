@@ -16,7 +16,5 @@ public final class KeyboardInputListener implements KeyListener {
 
     @Override
 
-    public void keyReleased(KeyEvent e) {
-        keyTyped(e);
-    }
+    public void keyReleased(KeyEvent e) {}
 }

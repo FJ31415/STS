@@ -32,8 +32,6 @@ public final class PlayingState extends GUIState {
                 GameEntity e = GameHandler.getInstance().getEntityAt(lX, lY);
                 if(e != null)
                     g.drawImage(sprites.getSprite(e.getGraphic().getUpdatedSpriteIdx()), rX, rY,null);
-                else
-                    g.drawImage(sprites.getSprite(Sprite.BLACK), rX, rY,null);
             }
     }
 
