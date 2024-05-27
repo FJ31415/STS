@@ -7,7 +7,7 @@ public enum Team {
     private final int spriteShift;
 
     Team() {
-        spriteShift = ordinal() * 20;
+        spriteShift = ordinal() * 40;
     }
 
     public int getSpriteShift() {

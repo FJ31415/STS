@@ -23,14 +23,7 @@ public final class Rendering extends JPanel {
     }
 
     @Override
-    public void paintComponents(Graphics g) {
-        System.out.println("rendering (Rendering.paintComponents())"); // TODO remove debug
-        GUI.getInstance().getGUIState().render(g, sprites);
-    }
-
-    @Override
-    public void update(Graphics g) {
-        System.out.println("rendering (Rendering)"); // TODO remove debug
+    public void paintComponent(Graphics g) {
         GUI.getInstance().getGUIState().render(g, sprites);
     }
 }

@@ -8,12 +8,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class SpriteSet {
-    private final BufferedImage[] sprites;
+    private final ArrayList<BufferedImage> sprites;
 
     public SpriteSet(String filePath, int nrOfSprites) {
-        sprites = new BufferedImage[nrOfSprites];
+        sprites = new ArrayList<>();
         loadSprites(loadAtlas(filePath));
     }
 
@@ -44,16 +45,15 @@ public class SpriteSet {
 
     private void loadSprites(BufferedImage atlas) {
         int x = 0, y = 0;
-        for (int i = 0; i < sprites.length; i++) {
-            if (x > atlas.getWidth()) {
+        while (true) {
+            if (x + Sprite.SIZE > atlas.getWidth()) {
                 x = 0;
                 y += Sprite.SIZE;
-                // end of file
-                if (y + Sprite.SIZE > atlas.hashCode())
+                // end of atlas
+                if(y + Sprite.SIZE > atlas.getHeight())
                     return;
             }
-
-            sprites[i] = atlas.getSubimage(x, y, Sprite.SIZE, Sprite.SIZE);
+            sprites.add(atlas.getSubimage(x, y, Sprite.SIZE, Sprite.SIZE));
 
             x += Sprite.SIZE;
         }
@@ -62,10 +62,10 @@ public class SpriteSet {
     // getter
 
     public BufferedImage getSprite(int idx) {
-        return sprites[idx];
+        return sprites.get(idx);
     }
 
     public BufferedImage getSprite(Sprite s) {
-        return sprites[s.ordinal()];
+        return sprites.get(s.ordinal());
     }
 }
