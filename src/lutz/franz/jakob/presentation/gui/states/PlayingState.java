@@ -39,7 +39,24 @@ public final class PlayingState extends GUIState {
 
     @Override
     public void onKeyPressed(KeyEvent e) {
-        // TODO implement
+        switch (e.getKeyChar()) {
+            case 'w':
+            case 'W':
+                GUI.getInstance().getCamera().addY(-1);
+                break;
+            case 's':
+            case 'S':
+                GUI.getInstance().getCamera().addY(1);
+                break;
+            case 'd':
+            case 'D':
+                GUI.getInstance().getCamera().addX(1);
+                break;
+            case 'a':
+            case 'A':
+                GUI.getInstance().getCamera().addX(-1);
+                break;
+        }
     }
 
     @Override
