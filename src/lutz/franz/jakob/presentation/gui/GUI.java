@@ -12,9 +12,6 @@ import javax.swing.JFrame;
 
 public final class GUI extends JFrame implements UI {
     private static volatile GUI instance;
-    private final Rendering rendering;
-    private final KeyboardInputListener keyBoardListener;
-    private final MouseInputListener mouseListener;
 
     private final Position camera;
     private GUIState state;
@@ -25,7 +22,7 @@ public final class GUI extends JFrame implements UI {
         camera = new Position(0,0);
         state = new PlayingState();
 
-        rendering = new Rendering();
+        Rendering rendering = new Rendering();
         add(rendering);
         pack();
         setTitle("STS");
@@ -36,8 +33,8 @@ public final class GUI extends JFrame implements UI {
         repaint();
         setVisible(true);
 
-        keyBoardListener = new KeyboardInputListener();
-        mouseListener = new MouseInputListener();
+        KeyboardInputListener keyBoardListener = new KeyboardInputListener();
+        MouseInputListener mouseListener = new MouseInputListener();
         addKeyListener(keyBoardListener);
         addMouseListener(mouseListener);
         requestFocus();

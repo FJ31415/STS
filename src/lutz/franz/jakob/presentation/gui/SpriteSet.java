@@ -4,7 +4,6 @@ import lutz.franz.jakob.presentation.graphics.Sprite;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +21,8 @@ public class SpriteSet {
         BufferedImage atlas = null;
 
         // System.out.println(new File(filePath).getAbsolutePath());
-        try (InputStream is = new FileInputStream(new File(filePath))) {
-            atlas = rescale((BufferedImage) ImageIO.read(is));
+        try (InputStream is = new FileInputStream(filePath)) {
+            atlas = rescale(ImageIO.read(is));
         } catch (IOException e) {
             System.out.println("Failed to load atlas!\n" + e.getLocalizedMessage());
         }

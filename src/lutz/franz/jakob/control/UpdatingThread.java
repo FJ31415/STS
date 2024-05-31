@@ -12,12 +12,14 @@ public abstract class UpdatingThread extends Thread {
     public final void run() {
         super.run();
         long lastUpdate = 0;
+        //noinspection InfiniteLoopStatement
         while (true)
             if(System.currentTimeMillis() - lastUpdate >= t) {
                 update();
                 lastUpdate = System.currentTimeMillis();
             } else {
                 try {
+                    //noinspection BusyWait
                     sleep(t - (System.currentTimeMillis() - lastUpdate));
                 } catch (InterruptedException e) {
                     throw new RuntimeException("UpdatingThread crashed!");
