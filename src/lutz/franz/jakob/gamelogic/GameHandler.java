@@ -97,4 +97,14 @@ public final class GameHandler {
 
         return null;
     }
+
+    public void updateGraphics() {
+        map.updateGraphics();
+
+        for (Building b : buildings)
+            b.getGraphic().update();
+
+        for (Unit u : units)
+            u.getGraphic().update();
+    }
 }

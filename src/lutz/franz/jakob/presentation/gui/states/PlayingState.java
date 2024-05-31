@@ -24,37 +24,45 @@ public final class PlayingState extends GUIState {
                 // render terrain
                 Terrain t = GameHandler.getInstance().getMap().getTerrain(lX, lY);
                 if (t != null)
-                    g.drawImage(sprites.getSprite(t.getGraphic().getUpdatedSpriteIdx()), rX, rY, null);
+                    g.drawImage(sprites.getSprite(t.getGraphic().getSpriteIdx()), rX, rY, null);
                 else
                     g.drawImage(sprites.getSprite(Sprite.BLACK), rX, rY,null);
 
                 // render entity
                 GameEntity e = GameHandler.getInstance().getEntityAt(lX, lY);
                 if(e != null)
-                    g.drawImage(sprites.getSprite(e.getGraphic().getUpdatedSpriteIdx()), rX, rY,null);
+                    g.drawImage(sprites.getSprite(e.getGraphic().getSpriteIdx()), rX, rY,null);
             }
     }
 
     @Override
     public void onKeyPressed(KeyEvent e) {
         switch (e.getKeyChar()) {
-            case 'w':
-            case 'W':
-                GUI.getInstance().getCamera().addY(-1);
-                break;
-            case 's':
+            case 'w': // TODO rework (debug)
+            case 'W':moveCamera(0, -1);
+            break;
+            case 's': // TODO rework (debug)
             case 'S':
-                GUI.getInstance().getCamera().addY(1);
+                moveCamera(0, 1);
                 break;
-            case 'd':
+            case 'd': // TODO rework (debug)
             case 'D':
-                GUI.getInstance().getCamera().addX(1);
+                moveCamera(1, 0);
                 break;
-            case 'a':
+            case 'a': // TODO rework (debug)
             case 'A':
-                GUI.getInstance().getCamera().addX(-1);
+                moveCamera(-1, 0);
+                break;
+            case 'q': // TODO remove (debug)S
+            case 'Q':
+                GameHandler.getInstance().updateGraphics();
                 break;
         }
+    }
+
+    private void moveCamera(int iX, int iY) {
+        GUI.getInstance().getCamera().add(iX, iY);
+        GUI.getInstance().updateGraphics();
     }
 
     @Override

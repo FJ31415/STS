@@ -14,6 +14,12 @@ public abstract class GameMap {
         this.map = map;
     }
 
+    public void updateGraphics() {
+        for (Terrain[] terrains : map)
+            for (Terrain terrain : terrains)
+                terrain.getGraphic().update();
+    }
+
     // getter
 
     public final Building[] getStartingBuildings() {

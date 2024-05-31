@@ -27,6 +27,7 @@ public class EntityGraphic implements SpriteGraphic {
     @Override
     public final void update() {
         selectedAnimation = host.getHealth() -1;
+        animations[selectedAnimation].update();
     }
 
     public final void setHost(GameEntity host) {
@@ -37,11 +38,5 @@ public class EntityGraphic implements SpriteGraphic {
     @Override
     public int getSpriteIdx() {
         return animations[selectedAnimation].getSpriteIdx();
-    }
-
-    @Override
-    public int getUpdatedSpriteIdx() {
-        animations[selectedAnimation].update();
-        return getSpriteIdx();
     }
 }

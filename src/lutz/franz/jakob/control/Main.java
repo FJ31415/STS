@@ -15,6 +15,7 @@ public final class Main {
         UpdatingThread renderThread = new UpdatingThread(2) {
             @Override
             protected void update() {
+                GameHandler.getInstance().updateGraphics();
                 ui.updateGraphics();
             }
         };

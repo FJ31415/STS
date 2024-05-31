@@ -42,9 +42,4 @@ public class Animation implements SpriteGraphic {
         return keyframes[selectedKeyframe].ordinal() + team.getSpriteShift();
     }
 
-    @Override
-    public final int getUpdatedSpriteIdx() {
-        update();
-        return getSpriteIdx();
-    }
 }
