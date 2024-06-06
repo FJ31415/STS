@@ -15,8 +15,8 @@ public final class GUI extends JFrame implements UI {
 
     private final Position camera;
     private GUIState state;
-    public static final int RESCALE_FACTOR = 4,  MAP_RADIUS = 4, MAP_SIZE = 1 + 2 * MAP_RADIUS,
-            WIDTH = (MAP_SIZE + 2) * Sprite.SIZE, HEIGHT = MAP_SIZE * Sprite.SIZE;
+    public static final int RESCALE_FACTOR = 4,  MAP_RADIUS = 4, MAP_SIZE = 1 + 2 * MAP_RADIUS, INFO_SIZE = 2 * Sprite.SIZE,
+            WIDTH = MAP_SIZE * Sprite.SIZE + INFO_SIZE, HEIGHT = MAP_SIZE * Sprite.SIZE;
 
     private GUI() {
         camera = new Position(0,0);

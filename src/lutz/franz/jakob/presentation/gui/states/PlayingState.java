@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 public final class PlayingState extends GUIState {
     @Override
     public void render(Graphics g, SpriteSet sprites) {
+        renderInfo(g, sprites);
+
         // render map
         for(int y = 0, fY = -1 * GUI.MAP_RADIUS; y < GUI.MAP_SIZE; y++, fY++)
             for (int x = 0, fX = -1 * GUI.MAP_RADIUS; x < GUI.MAP_SIZE; x++, fX++) {
@@ -33,6 +35,10 @@ public final class PlayingState extends GUIState {
                 if(e != null)
                     g.drawImage(sprites.getSprite(e.getGraphic().getSpriteIdx()), rX, rY,null);
             }
+    }
+
+    private void renderInfo(Graphics g, SpriteSet sprites) {
+        // TODO implement
     }
 
     @Override
